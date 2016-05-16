@@ -42,11 +42,23 @@ class TicTacToe
     selection = gets.chomp.to_i
     if validate(selection)
       SELECTIONS[SELECTIONS.key(selection)] = 'x'
+      winning
+      computerTurn
       puts SELECTIONS
+      winning
       # SELECTIONS[selection+1] = 'o'
       grid
       play
     end
+  end
+
+  def computerTurn
+    SELECTIONS[5] = 'o'
+  end
+
+  def winning
+    user = SELECTIONS.map { |key, value| key if value == 'x' }.compact
+
   end
 
   def validate(input)
